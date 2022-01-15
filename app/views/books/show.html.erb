@@ -1,0 +1,28 @@
+<h2>User info</h2>
+
+
+<h2>New book</h2>
+
+<%= form_with model: @book, local:true do |f| %>
+<label>Title</label>
+<%= f.text_field :title %>
+<label>Opinion</label>
+<%= f.text_area :body %>
+
+<%= f.submit 'Create Book' %>
+
+<% end %>
+
+<h2>Book detail</h2>
+
+<table>
+  <tbody>
+    <tr>
+      <td><%= @books.user_id %></td>
+      <td><%= @books.title %></td>
+      <td><%= @books.body %></td>
+      <td><%= link_to 'Edit', edit_book_path %></td>
+      <td><%= link_to 'Destroy' %></td>
+    </tr>
+  </tbody>
+</table>
