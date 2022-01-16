@@ -1,7 +1,21 @@
+<%if flash[:notice] %>
+  <p id="notice">
+      <%= flash[:notice] %>
+  </p>
+<% end %>
+
 <h2>User info</h2>
 
 
 <h2>New book</h2>
+<% if @book.errors.any? %>
+<%= @book.errors.count %>件のエラーが発生した。
+<ul>
+  <% @book.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+  <% end %>
+</ul>
+<% end %>
 
 <%= form_with model: @book, local:true do |f| %>
 <label>Title</label>
@@ -18,6 +32,7 @@
 <table>
   <tbody>
     <tr>
+      <td><%= image_tag @books.user.get_profile_image('50x50') %></td>
       <td><%= @books.user_id %></td>
       <td><%= @books.title %></td>
       <td><%= @books.body %></td>
