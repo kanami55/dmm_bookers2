@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @book = Book.new
     @user = User.new
     @users = User.find(params[:id])
     @books = @user.books
@@ -26,6 +27,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    @book = Book.new
     @user.update(user_params)
     if @user.save
       flash[:notice] = "Book was successfully destroyed."

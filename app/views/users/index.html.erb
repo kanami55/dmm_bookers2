@@ -1,3 +1,4 @@
+
 <h2>Users</h2>
 <table>
   <thead>
@@ -12,7 +13,7 @@
     <tr>
       <td><%= image_tag user.get_profile_image(5*5) %></td>
       <td><%= user.name %></td>
-      <td><%= link_to 'Show', user_path(user) %></td>
+      <td><%= link_to 'Show', user_path(user.id) %></td>
     </tr>
   </tbody>
   <% end %>

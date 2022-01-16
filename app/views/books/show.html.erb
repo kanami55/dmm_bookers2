@@ -1,9 +1,3 @@
-<%if flash[:notice] %>
-  <p id="notice">
-      <%= flash[:notice] %>
-  </p>
-<% end %>
-
 <h2>User info</h2>
 
 
@@ -34,10 +28,10 @@
     <tr>
       <td><%= image_tag @books.user.get_profile_image('50x50') %></td>
       <td><%= @books.user_id %></td>
-      <td><%= @books.title %></td>
+      <td><%= link_to @books.title, books_path %></td>
       <td><%= @books.body %></td>
-      <td><%= link_to 'Edit', edit_book_path %></td>
-      <td><%= link_to 'Destroy' %></td>
+      <td><%= link_to 'Edit', edit_book_path(@books.id) %></td>
+      <td><%= link_to 'Destroy',books_path(@books.id) %></td>
     </tr>
   </tbody>
 </table>

@@ -1,4 +1,12 @@
 <h1>Editing Book</h1>
+<% if @books.errors.any? %>
+  <%= @books.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @books.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 <%= form_with model: @books, method: :patch, local:true do |f| %>
 <label>Title</label>
