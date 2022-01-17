@@ -5,8 +5,8 @@ class UsersController < ApplicationController
 
   def show
     @book = Book.new
-    @users = User.find(params[:id])
-    @books = @users.books
+    @user = User.find(params[:id])
+    @books = @user.books
   end
 
   def new
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   if @user.save
     redirect_to user_path
   else
-    render 'users/sign_up'
+    render new_user_registration_path
   end
   end
 
