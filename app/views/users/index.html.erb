@@ -1,41 +1,5 @@
-<% if @book.errors.any? %>
-<%= @book.errors.count %>件のエラーが発生した。
-<ul>
-  <% @book.errors.full_messages.each do |message| %>
-  <li><%= message %></li>
-  <% end %>
-</ul>
-<% end %>
-
-
-<h2>User info</h2>
- <%= image_tag @user.get_profile_image('50x50') %>
-<table>
-  <tbody>
-    <tr></tr>
-    <tr>
-      <td>name</td>
-      <td><%= @user.name %></td>
-    </tr>
-    <tr>
-      <td>introduction</td>
-      <td><%= @user.introduction%></td>
-    </tr>
-  </tbody>
-</table>
-
-
-<!--部分テンプレート新規投稿-->
-<h2>New book</h2>
-<%= form_with model: @book, local:true do |f| %>
-<label>Title</label>
-<%= f.text_field :title %>
-<label>Opinion</label>
-<%= f.text_area :body %>
-
-<%= f.submit 'Create Book' %>
-
-<% end %>
+<!--部分テンプレート-->
+<%= render 'user', new_book: @new_book, user: @user %>
 
 
 <h2>Users</h2>

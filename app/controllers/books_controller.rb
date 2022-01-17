@@ -2,11 +2,11 @@ class BooksController < ApplicationController
 
   def create
     @user = current_user
-    @book = Book.new(book_params)
-    @book.user_id = current_user.id
-  if @book.save
+    @new_book = Book.new(book_params)
+    @new_book.user_id = current_user.id
+  if @new_book.save
      flash[:notice] = "Book was successfully created."
-     redirect_to book_path(@book)
+     redirect_to book_path(@new_book)
   else
       @books = Book.all
       flash[:notice] = "errors"
@@ -21,7 +21,7 @@ class BooksController < ApplicationController
   end
 
   def index
-    @book = Book.new
+    @new_book = Book.new
     @books = Book.all
     @user = current_user
   end
