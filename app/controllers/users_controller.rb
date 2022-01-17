@@ -1,28 +1,33 @@
 class UsersController < ApplicationController
-  def index
-    @users = User.all
-  end
-
-  def create
-    @user = User.new(user_params)
-    @user.user_id = current_user.id
-  if @user.save
-     flash[:notice] = "successfully."
-     redirect_to user_path(@user.id)
-  else
-    render :top
-  end
+  def new
+   @book = Book.new
   end
 
   def show
     @book = Book.new
-    @user = User.new
     @users = User.find(params[:id])
-    @books = @user.books
+    @books = @users.books
+  end
+
+  def new
+    @user = User.new(user_params)
+  if @user.save
+    redirect_to user_path
+  else
+    render 'users/sign_up'
+  end
   end
 
   def edit
     @user = User.find(params[:id])
+  end
+
+
+  def index
+    @users = User.all
+    @book = Book.new
+    @books = Book.all
+    @user = current_user
   end
 
   def update
@@ -41,5 +46,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :introduction, :get_profile_image)
+  end
+
+  def book_params
+    params.require(:book).permit(:title, :body)
   end
 end

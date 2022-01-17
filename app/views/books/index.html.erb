@@ -1,7 +1,3 @@
-<h2>User info</h2>
-
-
-<h2>New book</h2>
 <% if @book.errors.any? %>
   <%= @book.errors.count %>件のエラーが発生しました
   <ul>
@@ -11,15 +7,36 @@
   </ul>
 <% end %>
 
+
+<h2>User info</h2>
+ <%= image_tag @user.get_profile_image('50x50') %>
+<table>
+  <tbody>
+    <tr></tr>
+    <tr>
+      <td>name</td>
+      <td><%= @user.name %></td>
+    </tr>
+    <tr>
+      <td>introduction</td>
+      <td><%= @user.introduction%></td>
+    </tr>
+  </tbody>
+</table>
+
+<!--部分テンプレート新規投稿-->
+<h2>New book</h2>
 <%= form_with model: @book, local:true do |f| %>
 <label>Title</label>
 <%= f.text_field :title %>
 <label>Opinion</label>
 <%= f.text_area :body %>
 
-<%= f.submit 'Create Book'%>
+<%= f.submit 'Create Book' %>
 
 <% end %>
+
+
 
 <h2>Books</h2>
 <table>
