@@ -1,22 +1,34 @@
-<h2>User info</h2>
+<div class="container">
+    <div class="row">
+      <div class="col-8 mx-auto"><h2 class="mt-5 mb-4">User info</h2>
+        <% if @user.errors.any? %>
+        <%= @user.errors.count %>件のエラーが発生した。
+        <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+        <% end %>
 
-<% if @user.errors.any? %>
-<%= @user.errors.count %>件のエラーが発生した。
-<ul>
-<% @user.errors.full_messages.each do |message| %>
- <li><%= message %></li>
-<% end %>
-</ul>
-<% end %>
 
-<%= form_with model: @user, method: :patch, local:true do |f| %>
-<label>Name</label>
-<%= f.text_field :name %>
-<label>image</label>
- <%= f.file_field :profile_image, accept: "image/*" %>
-<label>Introduction</label>
-<%= f.text_area :introduction %>
+        <%= form_with model: @user, method: :patch, local:true do |f| %>
+        <div class="form-group">
+        <label>Name</label>
+        <%= f.text_field :name, class: "form-control name" %>
+        </div>
+        <div class="form-group">
+        <label>image</label>
+         <%= f.file_field :profile_image, accept: "image/*" %>
+        </div>
+        <div class="form-group">
+        <label>Introduction</label>
+        <%= f.text_area :introduction, class: "form-control" %>
+        </div>
 
-<%= f.submit 'Update User' %>
+        <%= f.submit 'Update User', class: "btn btn-success mb-2" %>
 
-<% end %>
+        <% end %>
+
+  </div>
+ </div>
+</div>

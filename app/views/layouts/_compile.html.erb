@@ -31,10 +31,9 @@
 </table>
 
 
-<%= link_to edit_user_path(user.name), class: "btn btn-light text-dark", method: :get do %>
-   <i class="fa-solid fa-user-gear"></i>
+<%= link_to edit_user_path(user.name), class: "btn btn-block btn-outline-secondary", method: :get do %>
+   <i class="fas fa-user-cog"></i>
 <% end %>
-
 
 <h2 class="mt-4">New book</h2>
 <%= form_with model: new_book, local:true do |f| %>
