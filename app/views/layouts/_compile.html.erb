@@ -1,0 +1,54 @@
+<div class="container">
+
+<div class="text-denger">
+<% if new_book.errors.any? %>
+  <%= new_book.errors.count %>件のエラーが発生しました
+  <ul>
+    <% new_book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+</div>
+
+<div class="row">
+
+<div class="col-md-3">
+  <h2 class="mt-5">User info</h2>
+ <%= image_tag user.get_profile_image('50x50') %>
+<table class="table table-hover">
+  <tbody>
+    <tr></tr>
+    <tr>
+      <td>name</td>
+      <td><%= user.name %></td>
+    </tr>
+    <tr>
+      <td>introduction</td>
+      <td><%= user.introduction%></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<%= link_to edit_user_path(user.name), class: "btn btn-light text-dark", method: :get do %>
+   <i class="fa-solid fa-user-gear"></i>
+<% end %>
+
+
+<h2 class="mt-4">New book</h2>
+<%= form_with model: new_book, local:true do |f| %>
+<div class="form-group">
+<label>Title</label>
+<%= f.text_field :title, class: "form-control" %>
+</div>
+<div class="form-group">
+<label>Opinion</label>
+<%= f.text_area :body, class: "form-control" %>
+</div>
+
+<%= f.submit 'Create Book', class: "btn btn-success" %>
+
+<% end %>
+
+</div>

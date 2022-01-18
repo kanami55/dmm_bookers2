@@ -1,9 +1,9 @@
 <!--部分テンプレート-->
-<%= render 'user', new_book: @new_book, user: @user %>
+<%= render 'layouts/compile', new_book: @new_book, user: @user %>
 
-
-<h2>Users</h2>
-<table>
+<div class="col-md-8 offset-md-1">
+<h2 class="mt-5">Users</h2>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>image</th>
@@ -18,6 +18,10 @@
       <td><%= user.name %></td>
       <td><%= link_to 'Show', user_path(user.id) %></td>
     </tr>
+    <% end %>
   </tbody>
-  <% end %>
 </table>
+</div>
+</div>
+</div>
+
