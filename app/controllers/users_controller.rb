@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     @book = Book.new
     @user.update(user_params)
     if @user.save
-      flash[:notice] = "Book was successfully destroyed."
+      flash[:notice] = "Welcome! You have signed up successfully."
       redirect_to user_path(@user.id)
     else
       render :edit
