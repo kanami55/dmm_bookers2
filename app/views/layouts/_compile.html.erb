@@ -25,13 +25,12 @@
     </tr>
     <tr>
       <td>introduction</td>
-      <td><%= user.introduction%></td>
+      <td><%= user.introduction %></td>
     </tr>
   </tbody>
 </table>
 
-
-<%= link_to edit_user_path(user.name), class: "btn btn-block btn-outline-secondary", method: :get do %>
+<%= link_to edit_user_path(current_user.id), class: "btn btn-block btn-outline-secondary", method: :get do %>
    <i class="fas fa-user-cog"></i>
 <% end %>
 
