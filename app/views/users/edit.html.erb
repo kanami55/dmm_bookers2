@@ -1,14 +1,16 @@
 <div class="container">
     <div class="row">
       <div class="col-8 mx-auto"><h2 class="mt-5 mb-4">User info</h2>
+        <div class="text-danger">
         <% if @user.errors.any? %>
         <%= @user.errors.count %>errors prohibited this obj from being saved:
-        <ul>
+        <ul >
         <% @user.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
         </ul>
         <% end %>
+        </div>
 
 
         <%= form_with model: @user, method: :patch, local:true do |f| %>

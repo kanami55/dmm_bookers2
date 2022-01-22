@@ -2,6 +2,7 @@
     <div class="row">
       <div class="col-8 mx-auto">
         <h1 class="mt-5 mb-4">Editing Book</h1>
+        <div class="text-danger">
         <% if @book.errors.any? %>
           <%= @book.errors.count %>errors prohibited this obj from being saved:
           <ul>
@@ -10,6 +11,7 @@
             <% end %>
           </ul>
         <% end %>
+        </div>
 
 
         <%= form_with model: @book, method: :patch, local:true do |f| %>
