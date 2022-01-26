@@ -10,6 +10,14 @@
             <%= link_to @book.user.name, user_path(@book.user) %></td>
             <td><%= link_to @book.title, books_path %></td>
             <td><%= @book.body %></td>
+            <td>
+              <% if current_user.already_favorited?(@book) %>
+              <%= link_to "♥", book_favorites_path(@book), method: :delete %>
+              <% else %>
+              <%= link_to "♥", book_favorites_path(@book), method: :post %>
+              <% end %>
+              <%= @book.favorites.count %>
+            </td>
             <td>コメント数:<%= @book.book_comments.count %></td>
             <% if @book.user == current_user %>
             <td><%= link_to 'Edit', edit_book_path(@book.id), class: "btn btn-success"%></td>

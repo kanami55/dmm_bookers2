@@ -6,7 +6,13 @@ class User < ApplicationRecord
 
   has_many :books, dependent: :destroy
   has_many :book_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_one_attached :profile_image
+
+  #いいねをしているかしていないかの判定を付ける
+  def already_favorited?(book)
+    self.favorites.exists?(book_id: book.id)
+  end
 
   validates :name, length: { in: 2..20 }, uniqueness: true
   validates :introduction, length: { maximum: 50 }
