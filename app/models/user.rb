@@ -17,12 +17,24 @@ class User < ApplicationRecord
 
   validates :name, length: { in: 2..20 }, uniqueness: true
   validates :introduction, length: { maximum: 50 }
-  
+
   #いいねをしているかしていないかの判定を付ける
   def already_favorited?(book)
     self.favorites.exists?(book_id: book.id)
   end
-  
+
+  #ユーザーのフォロー追加
+  def follow(user_id)
+    follower.ceate(followed_id: :user_id)
+  end
+  #ユーザーのフォロー外す
+  def unfollow(user_id)
+    follower.find_by(followed_id: :user_id).destroy
+  end
+  #フォローしていればtrueを返す
+  def following?(user)
+    following_user.include?(user)
+  end
 
   def get_profile_image(size)
     unless profile_image.attached?
