@@ -9,6 +9,8 @@ class UsersController < ApplicationController
     @new_book = Book.new
     @user = User.find(params[:id])
     @books = @user.books
+    @following_users = @user.following_user
+    @follower_users = @user.follower_user
   end
 
   def create
@@ -41,6 +43,16 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def follows
+    user = User.find(params[:id])
+    @users = user.following_user
+  end
+
+  def followers
+    user = User.find(params[:id])
+    @users = user.follower_user
   end
 
   private
