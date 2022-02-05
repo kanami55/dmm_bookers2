@@ -30,7 +30,7 @@
       <div>
         <% @book.book_comments.each do |book_comment| %>
         <div class="row ml-2">
-        <p class="ml-1 mr-2"><%= image_tag book_comment.user.get_profile_image("50x50") %></p>
+        <p class="ml-1 mr-2"><%= image_tag book_comment.user.get_profile_image("100x100") %></p>
         <%= book_comment.comment %>
         <% if book_comment.user == current_user %>
         <span><%= link_to "Destroy", book_book_comment_path(book_comment.book,book_comment), method: :delete, class: "btn btn-danger btn-sm ml-2" %>
